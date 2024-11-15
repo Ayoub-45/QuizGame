@@ -14,7 +14,7 @@ public class QuizClient {
             // Receive the quiz list from the server
             @SuppressWarnings("unchecked")
             List<QuizQuestion> quizList = (List<QuizQuestion>) ois.readObject();
-            System.out.println("Connected to the server. Quiz received:");
+            System.out.println("Connected to the server. Get Quiz (Quiz received !)");
             int score = 0;
             Scanner scanner = new Scanner(System.in);
 
@@ -34,11 +34,33 @@ public class QuizClient {
                 }
             }
             System.out.println("\nQuiz finished! Your score: " + score + "/" + quizList.size());
+            feedback(score);
 
         } catch (IOException e) {
             System.err.println("Error connecting to server: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             System.err.println("Error processing data from server: " + e.getMessage());
         }
+    }
+
+    private static void feedback(int score) {
+        switch (score) {
+            case 0:
+                System.out.println("bad result , perhaps you're not familiar with these concepts!");
+                break;
+            case 1:
+                System.out.println("Not good enough! But you can improve with time.");
+                break;
+            case 2:
+                System.out.println("Keep going you're doing a great job !");
+                break;
+            case 3:
+                System.out.println("Excellent, you're shinning !");
+                break;
+            default:
+                System.out.println("No score provided");
+                break;
+        }
+
     }
 }
