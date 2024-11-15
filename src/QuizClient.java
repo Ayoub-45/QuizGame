@@ -45,21 +45,11 @@ public class QuizClient {
 
     private static void feedback(int score) {
         switch (score) {
-            case 0:
-                System.out.println("bad result , perhaps you're not familiar with these concepts!");
-                break;
-            case 1:
-                System.out.println("Not good enough! But you can improve with time.");
-                break;
-            case 2:
-                System.out.println("Keep going you're doing a great job !");
-                break;
-            case 3:
-                System.out.println("Excellent, you're shinning !");
-                break;
-            default:
-                System.out.println("No score provided");
-                break;
+            case 0 -> System.out.println("bad result , perhaps you're not familiar with these concepts!");
+            case 1 -> System.out.println("Not good enough! But you can improve with time.");
+            case 2 -> System.out.println("Keep going you're doing a great job !");
+            case 3 -> System.out.println("Excellent, you're shinning !");
+            default -> System.out.println("No score provided");
         }
 
     }
