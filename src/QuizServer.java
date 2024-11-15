@@ -27,6 +27,7 @@ public class QuizServer {
     }
 
     private static List<QuizQuestion> prepareQuiz() {
+        // Sample data
         List<QuizQuestion> quizList = new ArrayList<>();
         quizList.add(new QuizQuestion(
                 "Which programming language is platform-independent?",
