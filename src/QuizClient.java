@@ -15,26 +15,17 @@ public class QuizClient {
             @SuppressWarnings("unchecked")
             List<QuizQuestion> quizList = (List<QuizQuestion>) ois.readObject();
             System.out.println("Connected to the server. Quiz received:");
-
-            // Initialize variables for scoring
             int score = 0;
             Scanner scanner = new Scanner(System.in);
 
-            // Iterate through the quiz questions
             for (QuizQuestion question : quizList) {
                 System.out.println("\n" + question.getQuestionText());
                 String[] options = question.getOptions();
-
-                // Display options
                 for (String option : options) {
                     System.out.println(option);
                 }
-
-                // Accept user's answer
                 System.out.print("Your answer: ");
                 String userAnswer = scanner.nextLine().trim();
-
-                // Check if the answer is correct
                 if (userAnswer.equalsIgnoreCase(question.getCorrectAnswer().substring(0, 1))) {
                     System.out.println("Correct!");
                     score++;
@@ -42,8 +33,6 @@ public class QuizClient {
                     System.out.println("Wrong! The correct answer was: " + question.getCorrectAnswer());
                 }
             }
-
-            // Display the final score
             System.out.println("\nQuiz finished! Your score: " + score + "/" + quizList.size());
 
         } catch (IOException e) {
